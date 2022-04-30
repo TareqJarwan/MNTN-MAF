@@ -1,9 +1,16 @@
 <template>
-  <Tutorial/>
+  <div>
+    <app-header />
+    <AppContents />
+  </div>
 </template>
 
 <script>
+import AppHeader from "../components/AppHeader.vue";
+import AppContents from "../components/AppContents.vue";
+
 export default {
-  name: 'IndexPage'
-}
+  components: { AppHeader, AppContents },
+  name: "IndexPage",
+};
 </script>
