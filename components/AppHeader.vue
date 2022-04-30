@@ -1,11 +1,8 @@
 <template>
-  <div>
+  <div class="container1">
     <SocialMedia />
     <section class="app__header">
-      <div class="app__header-bg">
-        <div class="transition-group" />
-        <img src="../assets/images/bg-image.webp" alt="bg-image" />
-      </div>
+      <div class="app__header-bg" />
       <div class="app__header-content">
         <div class="sub_title">
           <div />
@@ -18,7 +15,7 @@
         </div>
       </div>
     </section>
-    <AppNavigation :active="Start" />
+    <AppNavigation :active="'Start'" />
   </div>
 </template>
 
@@ -33,13 +30,26 @@ export default {
 </script>
 
 <style>
+.container1 {
+  display: flex;
+  justify-content: space-between;
+  height: 120vh;
+}
+
 .transition-group {
   position: absolute;
   bottom: 0;
   left: 0px;
   width: 100%;
   height: 200px;
-  background: linear-gradient(180deg, rgba(11, 29, 38, 0) 30%, #0b1d26 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(11, 29, 38, 0) 0%,
+    rgba(11, 29, 38, 0.5) 50%,
+    rgba(11, 29, 38, 1) 100%
+  );
+  border: 1px solid red;
+  z-index: 100;
 }
 
 .app__header {
@@ -47,32 +57,21 @@ export default {
   width: 100%;
   z-index: 1;
   left: 0;
-  top: -80px;
+  top: -130px;
+  position: relative;
 }
 
 .app__header-bg {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-
-  opacity: 0.5;
-
-  position: relative;
-  height: 217vh;
-  background: linear-gradient(330deg, #0b1d26 31%, #0b1d26 100%);
-}
-
-.app__header-bg img {
-  background-repeat: no-repeat;
+  background: linear-gradient(
+      to bottom,
+      rgba(11, 29, 38, 0) 0%,
+      rgba(11, 29, 38, 0.5) 80%,
+      rgba(11, 29, 38, 1) 100%
+    ),
+    url("../assets/images/bg-image.webp") no-repeat;
   background-size: cover;
-  background-position: center;
-  z-index: -1;
-  width: 100%;
-  height: auto;
-  position: absolute;
-  top: -400px;
-  left: 0;
+
+  height: 100%;
 }
 
 .app__header-content {
@@ -80,13 +79,13 @@ export default {
   flex-direction: column;
   align-items: flex-start;
 
+  width: 70%;
+  height: auto;
+  left: 50%;
+  top: 50%;
+  justify-content: center;
+  transform: translate(-50%, -50%);
   position: absolute;
-  max-width: 950px;
-  height: 300px;
-  left: 20%;
-  top: 40%;
-  z-index: 100;
-  opacity: 1;
 }
 
 .app__header-content .sub_title {
@@ -152,27 +151,21 @@ export default {
 }
 
 @media screen and (min-width: 1700px) {
-  .app__header {
-    height: 186vh;
-  }
-
-  .app__header-bg {
-    height: 217vh;
-  }
-}
-
-@media screen and (max-width: 650px) {
-  .app__header-bg {
-    height: 75vh;
+  .container1 {
+    height: 190vh;
   }
 
   .app__header-content {
-    width: 100%;
+    top: 30%;
+  }
+
+  .app__header-bg {
     height: 100%;
-    left: 0;
-    top: -19%;
-    flex-direction: column;
-    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .app__header-content {
     align-items: center;
     text-align: center;
   }
@@ -190,30 +183,25 @@ export default {
   }
 
   .app__header-content .title {
+    font-size: 48px;
+    line-height: 60px;
+  }
+}
+
+@media screen and (max-width: 786px) {
+  .app__header-content {
+    top: 40%;
+  }
+
+  .app__header-content .title {
     font-size: 36px;
     line-height: 60px;
   }
 }
 
 @media screen and (max-width: 500px) {
-  .transition-group {
-    bottom: -31%;
-  }
-
-  .app__header-bg {
-    height: 55vh;
-  }
-
-  .app__header {
-    height: 70vh;
-  }
-
   .app__header-content .app__header-bg {
     height: 260vh;
-  }
-
-  .app__header-bg img {
-    top: -70px;
   }
 }
 </style>

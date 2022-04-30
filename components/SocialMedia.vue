@@ -1,8 +1,12 @@
 <template>
   <div class="app__social">
     <p>FOLLOW US</p>
-    <img src="../assets/images/instgram-icon.svg" alt="instgram" />
-    <img src="../assets/images/twitter-icon.svg" alt="twitter" />
+    <a href="https://www.instagram.com/" target="_blank">
+      <img src="../assets/images/instgram-icon.svg" alt="instgram" />
+    </a>
+    <a href="https://www.twitter.com" target="_blank">
+      <img src="../assets/images/twitter-icon.svg" alt="twitter" />
+    </a>
   </div>
 </template>
 
@@ -14,13 +18,14 @@ export default {
 
 <style>
 .app__social {
+  width: 90px;
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
   height: 100%;
-  padding: 2rem;
+  margin: 2rem 0;
   align-items: center;
   z-index: 10000;
 }
@@ -34,8 +39,8 @@ export default {
   line-height: 21px;
   color: #ffffff;
   transform: rotate(90deg);
-  margin-bottom: 5rem;
   transition: all 0.3s ease-in-out;
+  white-space: nowrap;
 }
 
 .app__social img {
@@ -46,16 +51,30 @@ export default {
   transition: all 0.3s ease-in-out;
 }
 
-@media screen and (min-width: 2000px) {
-  .app__social img {
-    width: 70px;
-    height: 70px;
+.app__social a:first-of-type {
+  margin-top: 5rem;
+}
 
-    margin: 0.5rem 0;
+@media screen and (min-width: 2000px) {
+  .app__social {
+    width: 120px;
+  }
+  .app__social p {
+    font-size: 24px;
+    line-height: 24px;
+  }
+
+  .app__social img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .app__social a:first-of-type {
+    margin-top: 10rem;
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 650px) {
   .app__social {
     display: none;
   }

@@ -16,7 +16,7 @@ export default {
   props: ["active"],
   data() {
     return {
-      arr: ["Start", "1", "2", "3"],
+      arr: ["Start", "01", "02", "03"],
     };
   },
 };
@@ -47,9 +47,9 @@ export default {
   height: 40px;
   background-color: #cbcbcb;
   margin: 0.2rem 1rem;
-
   transition: background-color 0.2s ease-in-out;
   border: 1px #fff solid;
+  font-weight: 700;
 }
 
 .app__navigation-dot:hover {
@@ -61,13 +61,16 @@ export default {
 }
 
 @media screen and (min-width: 2000px) {
-  app__navigation-dot {
-    width: 20px;
-    height: 20px;
+  .app__navigation a {
+    font-size: 24px;
+  }
+
+  .app__navigation-dot {
+    height: 80px;
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 650px) {
   .app__navigation,
   .app__social {
     display: none;

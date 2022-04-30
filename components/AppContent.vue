@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="container2">
     <SocialMedia />
     <div
       class="app__content"
-      :class="[id % 2 == 0 ? '' : 'flex-wrap']"
-      :id="id + 1"
+      :class="[id % 2 == 0 ? 'flex-reverse' : 'flex-wrap']"
+      :id="pageNumber"
     >
       <div class="app__content-img" v-show="id % 2 == 1">
         <img :src="image" alt="" />
@@ -28,7 +28,7 @@
         <img :src="image" alt="" />
       </div>
     </div>
-    <AppNavigation :active="id" />
+    <AppNavigation :active="pageNumber" />
   </div>
 </template>
 
@@ -42,6 +42,7 @@ export default {
   data: function () {
     return {
       image: require("../assets/images/sec0" + (this.id + 1) + ".webp"),
+      pageNumber: "0" + (this.id + 1),
     };
   },
   methods: {
@@ -54,17 +55,23 @@ export default {
 </script>
 
 <style>
-.app__content {
+.container2 {
   height: 100vh;
   display: flex;
   justify-content: space-between;
+}
+
+.app__content {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
   align-items: center;
 
   margin: 120px 180px;
 }
 
 .app__content-container {
-  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -158,14 +165,11 @@ export default {
 }
 
 .app__content-img {
-  flex: 1;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   max-width: 400px;
   height: 500px;
-
-  margin-bottom: 70px;
 }
 
 .app__content-img img {
@@ -190,15 +194,38 @@ export default {
   }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1440px) {
   .app__content {
-    margin: 0px 120px;
+    justify-content: space-between;
+  }
+
+  .app__content-container {
+    width: 50%;
   }
 
   .app__content-container .number {
     font-size: 120px;
     line-height: 120px;
-    top: -14%;
+    top: -10%;
+    left: -15%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .container2 {
+    height: 110vh;
+  }
+
+  .app__content {
+    margin: 0px 120px;
+    justify-content: center;
+  }
+
+  .app__content-container .number {
+    font-size: 120px;
+    line-height: 120px;
+    top: -20%;
+    left: -15%;
   }
 
   .app__content-container .sub_title p {
@@ -221,8 +248,8 @@ export default {
   }
 
   .app__content-img {
-    width: 300px;
-    height: 400px;
+    width: 500px;
+    height: 600px;
   }
 
   .app__content-container .action p {
@@ -242,11 +269,21 @@ export default {
     line-height: 18px;
     margin-right: 10px;
   }
+
+  .app__content-container {
+    max-width: 80%;
+    margin-top: 100px;
+  }
 }
 
-@media screen and (max-width: 786px) {
+@media screen and (max-width: 768px) {
+  .container2 {
+    height: 125vh;
+  }
+
   .app__content {
-    margin: 0px 80px;
+    margin: 0px 40px;
+    height: 130vh;
   }
 
   .app__content-container .number {
@@ -300,19 +337,18 @@ export default {
     line-height: 18px;
     margin-right: 10px;
   }
-}
 
-@media screen and (max-width: 500px) {
   .app__content {
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
 
-    margin: 10rem 3rem 15rem;
+  .app__content-img img {
+    width: 400px;
   }
 
   .app__content-container {
-    max-width: 100%;
+    max-width: 70%;
   }
 
   .app__content-container .description {
@@ -345,11 +381,22 @@ export default {
 
   .app__content-img {
     margin-top: 20px;
+    width: 400px;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .app__content-img {
+    justify-content: center;
   }
 
-  .app__content-img {
-    width: 100%;
-    height: auto;
+  .app__content-img img {
+    width: 300px;
+  }
+
+  .app__content-container {
+    max-width: 90%;
   }
 }
 </style>

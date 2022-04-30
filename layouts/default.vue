@@ -1,17 +1,10 @@
 <template>
   <div class="container">
-    <AppNavbar />
     <nuxt />
   </div>
 </template>
 
 <script>
-import AppNavbar from "../components/AppNavbar";
-export default {
-  components: {
-    AppNavbar,
-  },
-};
 </script>
 
 <style>
